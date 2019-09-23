@@ -5,10 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ProjectInterface extends JFrame implements ActionListener{
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public int screenWidth = screenSize.width;
-	public int screenHeight = screenSize.height;
-	public int windowSize = 500;
 	
 	JButton button = new JButton("Check Relationship");
 	JTextField partnerName,yourName;
@@ -35,24 +31,23 @@ public class ProjectInterface extends JFrame implements ActionListener{
 		c.gridx = 2;
 		add(partnerName,c);
 		
-		c.anchor = GridBagConstraints.PAGE_START;
+		c.fill = GridBagConstraints.NONE;
 		c.gridx = 1;
 		c.gridy = 0;
 		c.insets = new Insets(25,10,10,10);
 		add(new JLabel("FLAMES") , c);
 		
-		c.anchor = GridBagConstraints.CENTER;
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridheight = 2;
 		add(button,c);
 		
-		firstName = new JLabel("First Name");
+		firstName = new JLabel("Your Name");
 		c.gridheight = 1;
 		c.gridy = 5;
 		add(firstName,c);
 		
-		secondName = new JLabel("Second Name");
+		secondName = new JLabel("Partner's Name");
 		c.gridy = 6;
 		add(secondName,c);
 		

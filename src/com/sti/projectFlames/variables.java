@@ -71,18 +71,13 @@ public class variables {
 		} else {
 			relationship = "You're not compatible!";
 		}
-		System.out.println("FLAMES");
+		
 		if(firstIsLessThanSecond) {
-			System.out.println("First Name: "+firstName + " = "+shortNameChar + " = "+shortNameValue );
-			System.out.println("Second Name: "+secondName + " = "+longNameChar + " = "+longNameValue);
 			firstNameSameChar = shortNameChar;
 			secondNameSameChar = longNameChar;
 		} else {
-			System.out.println("First Name: "+firstName + " = "+longNameChar + " = "+longNameValue );
-			System.out.println("Second Name: "+secondName + " = "+shortNameChar + " = "+shortNameValue);
 			firstNameSameChar = longNameChar;
 			secondNameSameChar = shortNameChar;
 		}
-		System.out.println("Relationship: "+ totalValue + " = "+relationship);
 	}
 }
