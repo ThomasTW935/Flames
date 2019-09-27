@@ -103,7 +103,7 @@ public class ProjectInterface extends JFrame implements ActionListener{
 				relationship.setForeground(Color.red);break;	
 			case "Angry":
 				relationship.setForeground(Color.black);break;	
-			case "Marriage":
+			case "Married":
 				relationship.setForeground(Color.blue);break;
 			case "Enemy":
 				relationship.setForeground(Color.orange);break;	
