@@ -7,11 +7,12 @@ import java.awt.event.*;
 public class ProjectInterface extends JFrame implements ActionListener{
 	
 	JButton button = new JButton("Check Relationship");
-	JTextField partnerName,yourName;
-	JLabel relationship,firstName,secondName;
+	JTextField partnerNameTField,yourNameTField;
+	JLabel relationship,yourName,partnerName,error;
+	JLabel relationshipDisplay,yourNameDisplay,partnerNameDisplay;
+	GridBagConstraints c = new GridBagConstraints();
 	public ProjectInterface() {
 		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
 		
 		c.gridx = 0;
 		c.gridy = 1;
@@ -21,15 +22,15 @@ public class ProjectInterface extends JFrame implements ActionListener{
 		c.gridx = 2;
 		add(new JLabel("Partner's Name"),c);
 		
-		yourName = new JTextField(15);
+		yourNameTField = new JTextField(15);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 2;
-		add(yourName,c);
+		add(yourNameTField,c);
 		
-		partnerName = new JTextField(15);
+		partnerNameTField = new JTextField(15);
 		c.gridx = 2;
-		add(partnerName,c);
+		add(partnerNameTField,c);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 1;
@@ -37,50 +38,89 @@ public class ProjectInterface extends JFrame implements ActionListener{
 		c.insets = new Insets(25,10,10,10);
 		add(new JLabel("FLAMES") , c);
 		
+		error = new JLabel("");
+		c.gridy = 8;
+		add(error, c);
+		
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridheight = 2;
 		add(button,c);
 		
-		firstName = new JLabel("Your Name");
+		yourName = new JLabel();
 		c.gridheight = 1;
+		c.gridwidth = 2;
+		c.gridx = 1;
 		c.gridy = 5;
-		add(firstName,c);
+		add(yourName,c);
 		
-		secondName = new JLabel("Partner's Name");
+		partnerName = new JLabel();
 		c.gridy = 6;
-		add(secondName,c);
+		add(partnerName,c);
 		
-		relationship = new JLabel("Relationship");
+		relationship = new JLabel();
 		c.gridy = 7;
 		add(relationship,c);
+		
+		yourNameDisplay = new JLabel();
+		c.gridx = 0;
+		c.gridy = 5;
+		add(yourNameDisplay , c);
+		
+		partnerNameDisplay = new JLabel();
+		c.gridy = 6;
+		add(partnerNameDisplay , c);
+		
+		relationshipDisplay = new JLabel();
+		c.gridy = 7;
+		add(relationshipDisplay , c);
 		
 		button.addActionListener(this);
 		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String yourNameString = yourName.getText();
-		String partnerNameString = partnerName.getText();
-		variables va = new variables();
-		va.compareNames(yourNameString, partnerNameString);
-		firstName.setText("First Name: " +va.firstName +" > " + va.firstNameSameChar + " = " + va.firstNameSameChar.length());	
-		secondName.setText("Second Name: " +va.secondName +" > "+ va.secondNameSameChar + " = " + va.secondNameSameChar.length());
-		relationship.setText("Result = " +( va.firstNameSameChar.length()+va.secondNameSameChar.length())+ " > "+ va.relationship); 
-		switch(va.relationship) {
-		case "Friends":
-			relationship.setForeground(Color.yellow);break;	
-		case "Lovers":
-			relationship.setForeground(Color.red);break;	
-		case "Angry":
-			relationship.setForeground(Color.black);break;	
-		case "Marriage":
-			relationship.setForeground(Color.blue);break;
-		case "Enemy":
-			relationship.setForeground(Color.orange);break;	
-		case "Sweet":
-			relationship.setForeground(Color.pink);break;	
-		}
+		
+		String yourNameString = yourNameTField.getText().trim();
+		String partnerNameString = partnerNameTField.getText().trim();
+		
+		if(yourNameString.length() != 0 && partnerNameString.length() != 0) {
+			error.setText("");
+			yourNameDisplay.setText("Your Name: ");
+			partnerNameDisplay.setText("Partner's Name: ");
+			relationshipDisplay.setText("Relationship: ");
+			
+			variables va = new variables();
+			va.compareNames(yourNameString, partnerNameString);
+			yourName.setText(va.yourName +" > " + va.yourNameSameChar + " = " + va.yourNameSameChar.length());	
+			partnerName.setText(va.partnerName +" > "+ va.partnerNameSameChar + " = " + va.partnerNameSameChar.length());
+			relationship.setText((va.yourNameSameChar.length()+va.partnerNameSameChar.length())+ " > "+ va.relationship); 
+			
+			switch(va.relationship) {
+			case "Friends":
+				relationship.setForeground(Color.yellow);break;	
+			case "Lovers":
+				relationship.setForeground(Color.red);break;	
+			case "Angry":
+				relationship.setForeground(Color.black);break;	
+			case "Marriage":
+				relationship.setForeground(Color.blue);break;
+			case "Enemy":
+				relationship.setForeground(Color.orange);break;	
+			case "Sweet":
+				relationship.setForeground(Color.pink);break;	
+			default:
+				relationship.setForeground(Color.black);break;
+			}
+		} else {
+			error.setForeground(Color.red);
+			error.setText("Error: No Input");
+			yourName.setText("");
+			partnerName.setText("");
+			relationship.setText("");
+			yourNameDisplay.setText("");
+			partnerNameDisplay.setText("");
+			relationshipDisplay.setText("");
+		} 
 	}
-	
 }

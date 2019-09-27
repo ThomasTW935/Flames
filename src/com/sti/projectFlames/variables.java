@@ -1,22 +1,20 @@
 package com.sti.projectFlames;
 
-import java.util.ArrayList;
-
 public class variables {
-	String firstName;
-	String secondName;
+	String yourName;
+	String partnerName;
 	String relationship="";
-	String firstNameSameChar;
-	String secondNameSameChar;
+	String yourNameSameChar;
+	String partnerNameSameChar;
 	boolean firstIsLessThanSecond = true;
-	public void compareNames(String firstName, String secondName) {
-		this.firstName = firstName;
-		this.secondName = secondName;
-		String shortName = firstName.toLowerCase();
-		String longName = secondName.toLowerCase();
-		if(firstName.length()>secondName.length()) {
-			shortName = secondName;
-			longName = firstName;
+	public void compareNames(String yourName, String partnerName) {
+		this.yourName = yourName;
+		this.partnerName = partnerName;
+		String shortName = yourName.toLowerCase();
+		String longName = partnerName.toLowerCase();
+		if(yourName.length()>partnerName.length()) {
+			shortName = partnerName;
+			longName = yourName;
 			this.firstIsLessThanSecond = false;
 		}
 		String shortNameSameChar= "";
@@ -73,11 +71,11 @@ public class variables {
 		}
 		
 		if(firstIsLessThanSecond) {
-			firstNameSameChar = shortNameChar;
-			secondNameSameChar = longNameChar;
+			yourNameSameChar = shortNameChar;
+			partnerNameSameChar = longNameChar;
 		} else {
-			firstNameSameChar = longNameChar;
-			secondNameSameChar = shortNameChar;
+			yourNameSameChar = longNameChar;
+			partnerNameSameChar = shortNameChar;
 		}
 	}
 }
