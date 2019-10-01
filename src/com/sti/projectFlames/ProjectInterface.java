@@ -81,8 +81,8 @@ public class ProjectInterface extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		String yourNameString = yourNameTField.getText().trim();
-		String partnerNameString = partnerNameTField.getText().trim();
+		String yourNameString = (yourNameTField.getText().trim()).toLowerCase();
+		String partnerNameString = (partnerNameTField.getText().trim()).toLowerCase();
 		
 		if(yourNameString.length() != 0 && partnerNameString.length() != 0) {
 			error.setText("");

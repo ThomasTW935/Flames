@@ -10,8 +10,8 @@ public class variables {
 	public void compareNames(String yourName, String partnerName) {
 		this.yourName = yourName;
 		this.partnerName = partnerName;
-		String shortName = yourName.toLowerCase();
-		String longName = partnerName.toLowerCase();
+		String shortName = yourName;
+		String longName = partnerName;
 		if(yourName.length()>partnerName.length()) {
 			shortName = partnerName;
 			longName = yourName;
@@ -42,7 +42,7 @@ public class variables {
 		determineRelationship(shortNameSameChar, longNameSameChar);	
 	}
 	
-	public String SeperateSameChar(String name, String findChar) {
+	private String SeperateSameChar(String name, String findChar) {
 		String sameChar="";
 		for(int i = 0; i<name.length(); i++) {
 			if(String.valueOf(name.charAt(i)).equals(findChar)) {
@@ -52,7 +52,7 @@ public class variables {
 		return sameChar;
 	}
 	
-	public void determineRelationship(String shortNameChar, String longNameChar) {
+	private void determineRelationship(String shortNameChar, String longNameChar) {
 		int shortNameValue = shortNameChar.length();
 		int longNameValue = longNameChar.length();
 		int totalValue = (shortNameValue+longNameValue);
